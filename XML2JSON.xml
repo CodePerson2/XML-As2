@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<System name="XML2JSON">
+  <Parameters>
+    <Parameter id="0" name="SourceFileExists" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="1" name="Source" type="1">
+      <values>
+        <value>Disk</value>
+        <value>STDIN</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="2" name="Destination" type="1">
+      <values>
+        <value>Disk</value>
+        <value>STDOUT</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="3" name="NumOfTags" type="1">
+      <values>
+        <value>0</value>
+        <value>&gt;0</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="4" name="ConversionDirection" type="1">
+      <values>
+        <value>XML2JSON</value>
+        <value>JSON2XML</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="5" name="InputFileType" type="1">
+      <values>
+        <value>JSON</value>
+        <value>XML</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+  </Parameters>
+  <OutputParameters />
+  <Relations />
+  <Constraints />
+  <Testset doi="2">
+    <Testcase TCNo="0">
+      <Value>1</Value>
+      <Value>true</Value>
+      <Value>Disk</Value>
+      <Value>STDOUT</Value>
+      <Value>&gt;0</Value>
+      <Value>JSON2XML</Value>
+      <Value>XML</Value>
+    </Testcase>
+    <Testcase TCNo="1">
+      <Value>2</Value>
+      <Value>true</Value>
+      <Value>STDIN</Value>
+      <Value>Disk</Value>
+      <Value>0</Value>
+      <Value>XML2JSON</Value>
+      <Value>JSON</Value>
+    </Testcase>
+    <Testcase TCNo="2">
+      <Value>3</Value>
+      <Value>false</Value>
+      <Value>Disk</Value>
+      <Value>Disk</Value>
+      <Value>&gt;0</Value>
+      <Value>XML2JSON</Value>
+      <Value>XML</Value>
+    </Testcase>
+    <Testcase TCNo="3">
+      <Value>4</Value>
+      <Value>false</Value>
+      <Value>STDIN</Value>
+      <Value>STDOUT</Value>
+      <Value>0</Value>
+      <Value>JSON2XML</Value>
+      <Value>JSON</Value>
+    </Testcase>
+    <Testcase TCNo="4">
+      <Value>5</Value>
+      <Value>false</Value>
+      <Value>Disk</Value>
+      <Value>STDOUT</Value>
+      <Value>0</Value>
+      <Value>XML2JSON</Value>
+      <Value>XML</Value>
+    </Testcase>
+    <Testcase TCNo="5">
+      <Value>6</Value>
+      <Value>false</Value>
+      <Value>STDIN</Value>
+      <Value>Disk</Value>
+      <Value>&gt;0</Value>
+      <Value>JSON2XML</Value>
+      <Value>JSON</Value>
+    </Testcase>
+    <Testcase TCNo="6">
+      <Value>7</Value>
+      <Value>true</Value>
+      <Value>Disk</Value>
+      <Value>STDOUT</Value>
+      <Value>&gt;0</Value>
+      <Value>XML2JSON</Value>
+      <Value>JSON</Value>
+    </Testcase>
+    <Testcase TCNo="7">
+      <Value>8</Value>
+      <Value>false</Value>
+      <Value>STDIN</Value>
+      <Value>Disk</Value>
+      <Value>&gt;0</Value>
+      <Value>JSON2XML</Value>
+      <Value>XML</Value>
+    </Testcase>
+  </Testset>
+  <Header>
+    <Value />
+    <Value>SOURCEFILEEXISTS</Value>
+    <Value>SOURCE</Value>
+    <Value>DESTINATION</Value>
+    <Value>NUMOFTAGS</Value>
+    <Value>CONVERSIONDIRECTION</Value>
+    <Value>INPUTFILETYPE</Value>
+  </Header>
+  <Stat-Data>
+    <ExecutionTime>0.037</ExecutionTime>
+    <MaxDomainSize>2</MaxDomainSize>
+    <MinDomainSize>2</MinDomainSize>
+    <TotalNoOfCombination>60</TotalNoOfCombination>
+    <TotalNoOfTests>8</TotalNoOfTests>
+    <Algorithm>IPOG</Algorithm>
+  </Stat-Data>
+</System>
+
