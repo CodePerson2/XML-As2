@@ -1,8 +1,19 @@
 import subprocess
 import sys
-import filecmp
 import csv
 from xml.etree.ElementTree import tostring
+
+# https://stackoverflow.com/a/23038606
+# helper function, ignore line endings generated on windows/linux
+def compareFilesByLine(path1, path2):
+    line1 = line2 = True
+    with open(path1, 'r') as f1, open(path2, 'r') as f2:
+        while line1 and line2:
+            line1 = f1.readline()
+            line2 = f2.readline()
+            if line1 != line2:
+                return False
+    return True
 
 testDirections = []
 
@@ -76,7 +87,7 @@ def compareTestExpected(testNum, output, retcode):
     
     # otherwise we should check the outputs to see if they match
     
-    fileoutput = filecmp.cmp(output, expectedOutputFile, shallow=True)
+    fileoutput = compareFilesByLine(output, expectedOutputFile)
     if fileoutput == False: # outputs are not equal to expected
         return False
     
