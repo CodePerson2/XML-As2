@@ -8,6 +8,7 @@ Run the tests with
 
 XML2JSON
 ========
+https://github.com/hay/xml2json
 
 **This module is deprecated and will not be updated anymore (May 2019)**
 
