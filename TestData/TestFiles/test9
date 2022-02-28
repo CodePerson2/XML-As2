@@ -1,0 +1,1 @@
+{"root": {"a": {"#tail": "\n"}, "d": {"e": [{"#tail": " ", "#text": "text"}, {"#tail": " ", "#text": "text"}], "#tail": "\n", "#text": " "}, "g": [{"h": {"#tail": " ", "#text": "text"}, "#tail": "\n", "#text": " text contig "}, {"h": {"#tail": " noncontig ", "#text": "text"}, "#tail": "\n", "#text": " text "}], "#text": "\n"}}

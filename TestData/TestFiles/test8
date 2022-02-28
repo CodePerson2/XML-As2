@@ -1,0 +1,9 @@
+<root>
+<b>text</b>
+<c name="value">ok</c>
+<d> <e>text</e> <e>text</e> </d>
+<g> text <h>text</h> noncontig </g>
+
+<i name="value"/> 
+<j> <k>text</k> <l>text</l> </j>
+</root>

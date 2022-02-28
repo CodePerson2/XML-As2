@@ -1,38 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <System name="XML2JSON">
   <Parameters>
-    <Parameter id="0" name="SourceFileExists" type="2">
-      <values>
-        <value>true</value>
-        <value>false</value>
-      </values>
-      <basechoices />
-      <invalidValues />
-    </Parameter>
-    <Parameter id="1" name="Source" type="1">
-      <values>
-        <value>Disk</value>
-        <value>STDIN</value>
-      </values>
-      <basechoices />
-      <invalidValues />
-    </Parameter>
-    <Parameter id="2" name="Destination" type="1">
-      <values>
-        <value>Disk</value>
-        <value>STDOUT</value>
-      </values>
-      <basechoices />
-      <invalidValues />
-    </Parameter>
-    <Parameter id="3" name="NumOfTags" type="1">
-      <values>
-        <value>0</value>
-        <value>&gt;0</value>
-      </values>
-      <basechoices />
-      <invalidValues />
-    </Parameter>
     <Parameter id="4" name="ConversionDirection" type="1">
       <values>
         <value>XML2JSON</value>
@@ -43,8 +11,89 @@
     </Parameter>
     <Parameter id="5" name="InputFileType" type="1">
       <values>
-        <value>JSON</value>
-        <value>XML</value>
+        <value>PureXML</value>
+        <value>PureJSON</value>
+        <value>Other</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="6" name="FileContainsTags" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="7" name="Pattern1Tags" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="8" name="Pattern2Tags" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="9" name="Pattern3Tags" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="10" name="Pattern4Tags" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="11" name="Pattern5Tags" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="12" name="Pattern6Tags" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="13" name="Pattern7Tags" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="14" name="ContainsNonContiguousText" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="15" name="FileEmpty" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
       </values>
       <basechoices />
       <invalidValues />
@@ -52,96 +101,299 @@
   </Parameters>
   <OutputParameters />
   <Relations />
-  <Constraints />
+  <Constraints>
+    <Constraint text="((Pattern1Tags = true) || (Pattern2Tags = true) || (Pattern3Tags = true) || (Pattern4Tags = true) || (Pattern5Tags = true) || (Pattern6Tags = true) || (Pattern7Tags = true)) =&gt; (FileContainsTags = true)">
+      <Parameters>
+        <Parameter name="Pattern1Tags" />
+        <Parameter name="Pattern2Tags" />
+        <Parameter name="Pattern3Tags" />
+        <Parameter name="Pattern4Tags" />
+        <Parameter name="Pattern5Tags" />
+        <Parameter name="Pattern6Tags" />
+        <Parameter name="Pattern7Tags" />
+        <Parameter name="FileContainsTags" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(InputFileType = &quot;PureXML&quot;) =&gt; (ConversionDirection = &quot;XML2JSON&quot;)">
+      <Parameters>
+        <Parameter name="InputFileType" />
+        <Parameter name="ConversionDirection" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(InputFileType = &quot;PureJSON&quot;) =&gt; (ConversionDirection = &quot;JSON2XML&quot;)">
+      <Parameters>
+        <Parameter name="InputFileType" />
+        <Parameter name="ConversionDirection" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(FileEmpty = true) =&gt; (FileContainsTags = false)">
+      <Parameters>
+        <Parameter name="FileEmpty" />
+        <Parameter name="FileContainsTags" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(FileContainsTags = true) =&gt; (FileEmpty = false)">
+      <Parameters>
+        <Parameter name="FileContainsTags" />
+        <Parameter name="FileEmpty" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(FileEmpty = true) =&gt; (ContainsNonContiguousText = false)">
+      <Parameters>
+        <Parameter name="FileEmpty" />
+        <Parameter name="ContainsNonContiguousText" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(FileEmpty = true) =&gt; (InputFileType = &quot;Other&quot;)">
+      <Parameters>
+        <Parameter name="FileEmpty" />
+        <Parameter name="InputFileType" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="((InputFileType = &quot;PureXML&quot;) || (InputFileType = &quot;PureJSON&quot;)) =&gt; (FileContainsTags = true)">
+      <Parameters>
+        <Parameter name="InputFileType" />
+        <Parameter name="InputFileType" />
+        <Parameter name="FileContainsTags" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(ContainsNonContiguousText = true) =&gt; (FileContainsTags = true)">
+      <Parameters>
+        <Parameter name="ContainsNonContiguousText" />
+        <Parameter name="FileContainsTags" />
+      </Parameters>
+    </Constraint>
+    <Constraint text="(FileContainsTags = true) =&gt; ((Pattern1Tags = true) || (Pattern2Tags = true) || (Pattern3Tags = true) || (Pattern4Tags = true) || (Pattern5Tags = true) || (Pattern6Tags = true) || (Pattern7Tags = true)) ">
+      <Parameters>
+        <Parameter name="FileContainsTags" />
+        <Parameter name="Pattern1Tags" />
+        <Parameter name="Pattern2Tags" />
+        <Parameter name="Pattern3Tags" />
+        <Parameter name="Pattern4Tags" />
+        <Parameter name="Pattern5Tags" />
+        <Parameter name="Pattern6Tags" />
+        <Parameter name="Pattern7Tags" />
+      </Parameters>
+    </Constraint>
+  </Constraints>
   <Testset doi="2">
     <Testcase TCNo="0">
       <Value>1</Value>
+      <Value>XML2JSON</Value>
+      <Value>PureXML</Value>
       <Value>true</Value>
-      <Value>Disk</Value>
-      <Value>STDOUT</Value>
-      <Value>&gt;0</Value>
-      <Value>JSON2XML</Value>
-      <Value>XML</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
     </Testcase>
     <Testcase TCNo="1">
       <Value>2</Value>
+      <Value>JSON2XML</Value>
+      <Value>PureJSON</Value>
       <Value>true</Value>
-      <Value>STDIN</Value>
-      <Value>Disk</Value>
-      <Value>0</Value>
-      <Value>XML2JSON</Value>
-      <Value>JSON</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
     </Testcase>
     <Testcase TCNo="2">
       <Value>3</Value>
-      <Value>false</Value>
-      <Value>Disk</Value>
-      <Value>Disk</Value>
-      <Value>&gt;0</Value>
       <Value>XML2JSON</Value>
-      <Value>XML</Value>
+      <Value>Other</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
     </Testcase>
     <Testcase TCNo="3">
       <Value>4</Value>
-      <Value>false</Value>
-      <Value>STDIN</Value>
-      <Value>STDOUT</Value>
-      <Value>0</Value>
       <Value>JSON2XML</Value>
-      <Value>JSON</Value>
+      <Value>Other</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
     </Testcase>
     <Testcase TCNo="4">
       <Value>5</Value>
-      <Value>false</Value>
-      <Value>Disk</Value>
-      <Value>STDOUT</Value>
-      <Value>0</Value>
       <Value>XML2JSON</Value>
-      <Value>XML</Value>
+      <Value>Other</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
     </Testcase>
     <Testcase TCNo="5">
       <Value>6</Value>
+      <Value>XML2JSON</Value>
+      <Value>PureXML</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
       <Value>false</Value>
-      <Value>STDIN</Value>
-      <Value>Disk</Value>
-      <Value>&gt;0</Value>
-      <Value>JSON2XML</Value>
-      <Value>JSON</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
     </Testcase>
     <Testcase TCNo="6">
       <Value>7</Value>
+      <Value>JSON2XML</Value>
+      <Value>PureJSON</Value>
       <Value>true</Value>
-      <Value>Disk</Value>
-      <Value>STDOUT</Value>
-      <Value>&gt;0</Value>
-      <Value>XML2JSON</Value>
-      <Value>JSON</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
     </Testcase>
     <Testcase TCNo="7">
       <Value>8</Value>
+      <Value>XML2JSON</Value>
+      <Value>PureXML</Value>
+      <Value>true</Value>
       <Value>false</Value>
-      <Value>STDIN</Value>
-      <Value>Disk</Value>
-      <Value>&gt;0</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+    </Testcase>
+    <Testcase TCNo="8">
+      <Value>9</Value>
       <Value>JSON2XML</Value>
-      <Value>XML</Value>
+      <Value>PureJSON</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+    </Testcase>
+    <Testcase TCNo="9">
+      <Value>10</Value>
+      <Value>XML2JSON</Value>
+      <Value>Other</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+    </Testcase>
+    <Testcase TCNo="10">
+      <Value>11</Value>
+      <Value>XML2JSON</Value>
+      <Value>Other</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+    </Testcase>
+    <Testcase TCNo="11">
+      <Value>12</Value>
+      <Value>JSON2XML</Value>
+      <Value>PureJSON</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+    </Testcase>
+    <Testcase TCNo="12">
+      <Value>13</Value>
+      <Value>JSON2XML</Value>
+      <Value>Other</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
     </Testcase>
   </Testset>
   <Header>
     <Value />
-    <Value>SOURCEFILEEXISTS</Value>
-    <Value>SOURCE</Value>
-    <Value>DESTINATION</Value>
-    <Value>NUMOFTAGS</Value>
     <Value>CONVERSIONDIRECTION</Value>
     <Value>INPUTFILETYPE</Value>
+    <Value>FILECONTAINSTAGS</Value>
+    <Value>PATTERN1TAGS</Value>
+    <Value>PATTERN2TAGS</Value>
+    <Value>PATTERN3TAGS</Value>
+    <Value>PATTERN4TAGS</Value>
+    <Value>PATTERN5TAGS</Value>
+    <Value>PATTERN6TAGS</Value>
+    <Value>PATTERN7TAGS</Value>
+    <Value>CONTAINSNONCONTIGUOUSTEXT</Value>
+    <Value>FILEEMPTY</Value>
   </Header>
   <Stat-Data>
-    <ExecutionTime>0.037</ExecutionTime>
-    <MaxDomainSize>2</MaxDomainSize>
+    <ExecutionTime>0.023</ExecutionTime>
+    <MaxDomainSize>3</MaxDomainSize>
     <MinDomainSize>2</MinDomainSize>
-    <TotalNoOfCombination>60</TotalNoOfCombination>
-    <TotalNoOfTests>8</TotalNoOfTests>
+    <TotalNoOfCombination>263</TotalNoOfCombination>
+    <TotalNoOfTests>13</TotalNoOfTests>
     <Algorithm>IPOG</Algorithm>
   </Stat-Data>
 </System>

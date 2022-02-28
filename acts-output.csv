@@ -1,0 +1,14 @@
+ConversionDirection,InputFileType,FileContainsTags,Pattern1Tags,Pattern2Tags,Pattern3Tags,Pattern4Tags,Pattern5Tags,Pattern6Tags,Pattern7Tags,ContainsNonContiguousText,FileEmpty
+XML2JSON,PureXML,true,false,false,false,false,false,false,true,false,false
+JSON2XML,PureJSON,true,true,true,true,true,true,true,false,true,false
+XML2JSON,Other,false,false,false,false,false,false,false,false,false,true
+JSON2XML,Other,false,false,false,false,false,false,false,false,false,false
+XML2JSON,Other,true,true,true,true,false,true,false,true,true,false
+XML2JSON,PureXML,true,true,true,false,true,false,true,true,false,false
+JSON2XML,PureJSON,true,false,false,true,true,true,true,true,false,false
+XML2JSON,PureXML,true,false,true,true,true,true,true,false,true,false
+JSON2XML,PureJSON,true,true,false,false,false,false,true,true,true,false
+XML2JSON,Other,true,true,true,false,true,true,false,true,true,false
+XML2JSON,Other,true,false,true,true,false,false,true,false,true,false
+JSON2XML,PureJSON,true,false,false,false,false,true,false,false,false,false
+JSON2XML,Other,false,false,false,false,false,false,false,false,false,true

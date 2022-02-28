@@ -1,0 +1,6 @@
+<root>
+<a />
+<d> <e>text</e> <e>text</e> </d>
+<g> text contig <h>text</h> </g>
+<g> text <h>text</h> noncontig </g>
+</root>

@@ -236,7 +236,7 @@ def main():
     if (options.type == "xml2json"):
         out = xml2json(input, options, strip_ns, strip)
     else:
-        out = json2xml(input)
+        out = json2xml(input).decode("utf-8")
 
     if (options.out):
         file = open(options.out, 'w')

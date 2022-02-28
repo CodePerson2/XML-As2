@@ -1,0 +1,13 @@
+<root>
+<b>text</b>
+<i name="value"/> 
+
+
+<d> <e>text</e> <e>text</e> </d>
+
+<g> text <h>text</h> noncontig </g>
+</root>
+
+{"root": {"a": {"#tail": "\n"}, "d": {"e": [{"#tail": " ", "#text": "text"}, {"#tail": " ", "#text": "text"}], "#tail": "\n", "#text": " "}, "g": [{"h": {"#tail": " ", "#text": "text"}, "#tail": "\n", "#text": " text contig "}, {"h": {"#tail": " noncontig ", "#text": "text"}, "#tail": "\n", "#text": " text "}], "#text": "\n"}}
+
+lets just randomly put some json in here
